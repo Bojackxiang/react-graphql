@@ -102,10 +102,10 @@ app.use('/graphql', graphqlHTTP({
 
     createUser: (args) => { // => 注意这个args本身自己就是一个object
       const { email, password } = args.userInput;
-      
+
       return UserModel.find({ email: email })
         .then(user => {
-          
+
           console.log("🚩 开始检查重复的用户")
           if (user.length > 0) throw "duplicated error"
           return user
