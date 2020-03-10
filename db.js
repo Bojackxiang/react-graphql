@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 
 const dbConnection = () => {
-    mongoose.connect('mongodb://127.0.0.1:27017', { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose.connect('mongodb+srv://my-old-mac:911004@cluster0-ee8ps.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => { console.log('db is ready ✅') })
         .catch(() => {
             console.log('db has error ❌')
