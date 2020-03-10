@@ -54,6 +54,7 @@ const getUser = () => {
 }
 
 const createUser = (args) => {
+    console.log('STARTING CREATE USER')
     const { email, password } = args.userInput;
 
     return UserModel.find({ email: email })

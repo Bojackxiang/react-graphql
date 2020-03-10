@@ -16,6 +16,12 @@ const db = require('./db');
 const gqlSchema = require('./graphql/graphql')
 const app = express();
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', "*")
+    res.setHeader('Access-Control-Allow-Methods', "POST,GET,OPTION")
+    res.setHeader('Access-Control-Allow-Headers', "Content-Type, Authentication")
+})
+
 app.use(bodyparser.json())
 
 app.use(isAuth)
@@ -37,6 +43,6 @@ app.use('/graphql', graphqlHTTP({
 
 db.dbConnection();
 
-app.listen(3000, () => {
+app.listen(3005, () => {
     console.log('server is running ✅')
 })
