@@ -15,12 +15,10 @@ const {
 const db = require('./db');
 const gqlSchema = require('./graphql/graphql')
 const app = express();
+const cors = require('cors')
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "*")
-    res.setHeader('Access-Control-Allow-Methods', "POST,GET,OPTION")
-    res.setHeader('Access-Control-Allow-Headers', "Content-Type, Authentication")
-})
+app.use(cors({origin:true,credentials: true}));
+
 
 app.use(bodyparser.json())
 
@@ -43,6 +41,6 @@ app.use('/graphql', graphqlHTTP({
 
 db.dbConnection();
 
-app.listen(3005, () => {
+app.listen(8080, () => {
     console.log('server is running ✅')
 })
